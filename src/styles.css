@@ -818,6 +818,7 @@ button { cursor: pointer; }
 
 .project-visual.soku { background: var(--sage); }
 .project-visual.pan { background: color-mix(in srgb, var(--peach) 72%, var(--cream)); }
+.project-visual.lumiere { background: color-mix(in srgb, var(--coral) 18%, var(--cream)); }
 
 .project-stage {
   position: relative;
@@ -944,6 +945,10 @@ button { cursor: pointer; }
 
 .project-stage.pan .project-label {
   background: color-mix(in srgb, var(--peach) 34%, var(--cream));
+}
+
+.project-stage.lumiere .project-label {
+  background: color-mix(in srgb, var(--coral) 22%, var(--cream));
 }
 
 .project-meta h3, .service-card h3, .proof-list h3 {

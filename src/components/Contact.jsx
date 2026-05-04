@@ -35,16 +35,16 @@ const timelines = [
 ]
 
 const mobileSteps = [
-  { id: ‘name’, kicker: ‘Start’, title: ‘What should I call you?’, hint: ‘Just your first name is fine.’ },
-  { id: ‘email’, kicker: ‘Reply to’, title: ‘Where should I reply?’, hint: ‘Use the email you actually check.’ },
-  { id: ‘business’, kicker: ‘Context’, title: ‘What business is this for?’, hint: ‘A business, studio, practice, or offer name is enough.’ },
-  { id: ‘goals’, kicker: ‘The real ask’, title: ‘What needs to change?’, hint: ‘Give me the friction, the offer, and what a better site should make easier.’ },
-  { id: ‘serviceType’, kicker: ‘Optional’, title: ‘What kind of business is it?’, hint: ‘Skip this if none of these feel quite right.’ },
-  { id: ‘projectType’, kicker: ‘Optional’, title: ‘What kind of project are you imagining?’, hint: ‘A best guess is enough.’ },
-  { id: ‘timeline’, kicker: ‘Optional’, title: ‘What timeline feels true?’, hint: ‘No pressure. This just frames urgency.’ },
-  { id: ‘budget’, kicker: ‘Optional’, title: ‘Any budget range worth naming?’, hint: ‘A rough comfort zone is more useful than a perfect number.’ },
-  { id: ‘website’, kicker: ‘Optional’, title: ‘Is there a current site?’, hint: ‘Drop a URL if there is one.’ },
-  { id: ‘review’, kicker: ‘Ready’, title: ‘Everything look right?’, hint: ‘Hit send and your details will arrive pre-filled — ready to go.’ },
+  { id: 'name', kicker: 'Start', title: 'What should I call you?', hint: 'Just your first name is fine.' },
+  { id: 'email', kicker: 'Reply to', title: 'Where should I reply?', hint: 'Use the email you actually check.' },
+  { id: 'business', kicker: 'Context', title: 'What business is this for?', hint: 'A business, studio, practice, or offer name is enough.' },
+  { id: 'goals', kicker: 'The real ask', title: 'What needs to change?', hint: 'Give me the friction, the offer, and what a better site should make easier.' },
+  { id: 'serviceType', kicker: 'Optional', title: 'What kind of business is it?', hint: 'Skip this if none of these feel quite right.' },
+  { id: 'projectType', kicker: 'Optional', title: 'What kind of project are you imagining?', hint: 'A best guess is enough.' },
+  { id: 'timeline', kicker: 'Optional', title: 'What timeline feels true?', hint: 'No pressure. This just frames urgency.' },
+  { id: 'budget', kicker: 'Optional', title: 'Any budget range worth naming?', hint: 'A rough comfort zone is more useful than a perfect number.' },
+  { id: 'website', kicker: 'Optional', title: 'Is there a current site?', hint: 'Drop a URL if there is one.' },
+  { id: 'review', kicker: 'Ready', title: 'Everything look right?', hint: 'Hit send and your details will arrive pre-filled — ready to go.' },
 ]
 
 function countWords(value) {

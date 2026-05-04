@@ -91,10 +91,6 @@ export default function ProjectDisplay({ project }) {
               className="project-screenshot"
               loading="lazy"
             />
-            <span className="project-label">
-              <strong>{project.title}</strong>
-              <small>{project.context}</small>
-            </span>
           </span>
         </span>
       </span>

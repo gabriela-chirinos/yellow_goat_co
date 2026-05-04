@@ -1,6 +1,8 @@
 import lustroCover from '../assets/projects/lustro.jpg'
 import sokuCover from '../assets/projects/soku.jpg'
 import panCover from '../assets/projects/pan.jpg'
+import lumiereCover from '../assets/projects/nailsalon.jpg'
+import portalCover from '../assets/projects/portal.png'
 
 export const projects = [
   {
@@ -36,6 +38,28 @@ export const projects = [
     url: 'https://gabriela-chirinos.github.io/japaneseBakery/',
     tone: 'pan',
     image: panCover,
+  },
+  {
+    id: '04',
+    title: 'Lumière Nail Atelier',
+    context: 'A refined homepage concept for a boutique nail atelier with luxury positioning.',
+    problem: 'The experience needed to feel as elevated as the service — editorial, precise, and appointment-driven.',
+    move: 'Warm photography, editorial type, and a direct path to booking built around service confidence.',
+    linkLabel: 'Open live site',
+    url: 'https://gabriela-chirinos.github.io/nailSalon',
+    tone: 'lumiere',
+    image: lumiereCover,
+  },
+  {
+    id: '05',
+    title: 'EL Portal',
+    context: 'A structured mockup for a content-forward portal experience with clear navigation.',
+    problem: 'The layout needed to organize dense information without losing hierarchy or direction.',
+    move: 'Clean sectioning, intentional type scale, and a visual flow that guides without overwhelming.',
+    linkLabel: 'Open live site',
+    url: 'https://gabriela-chirinos.github.io/EL_Portal_Mockup/',
+    tone: 'portal',
+    image: portalCover,
   },
 ]
 
