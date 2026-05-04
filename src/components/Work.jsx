@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 import { projects } from '../data/projects.js'
 import ProjectDisplay from './ProjectDisplay.jsx'
 
-const CYCLE_INTERVAL = 2800
+const CYCLE_INTERVAL = 3000
 
 export default function Work() {
   const [activeIndex, setActiveIndex] = useState(0)

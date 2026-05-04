@@ -708,6 +708,7 @@ button { cursor: pointer; }
   line-height: 1;
   text-transform: uppercase;
   transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  margin-bottom: 1.5rem;
 }
 
 .work-index-button span {
