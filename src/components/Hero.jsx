@@ -1,9 +1,30 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import hiremeUrl from '../assets/hireme.png'
 
 const SignatureMark = lazy(() => import('./SignatureMark.jsx'))
+const HERO_VISUAL_QUERY = '(min-width: 1100px)'
+
+function useHeroVisual() {
+  const [showVisual, setShowVisual] = useState(() => (
+    typeof window !== 'undefined' ? window.matchMedia(HERO_VISUAL_QUERY).matches : true
+  ))
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined
+    const query = window.matchMedia(HERO_VISUAL_QUERY)
+    const updateVisual = () => setShowVisual(query.matches)
+
+    updateVisual()
+    query.addEventListener('change', updateVisual)
+    return () => query.removeEventListener('change', updateVisual)
+  }, [])
+
+  return showVisual
+}
 
 export default function Hero() {
+  const showVisual = useHeroVisual()
+
   return (
     <section id="top" className="hero section-shell">
       <div className="hero-copy">
@@ -21,16 +42,18 @@ export default function Hero() {
           </a>
         </div>
       </div>
-      <Suspense
-        fallback={
-          <div className="hero-visual reveal hero-visual-fallback" aria-label="Yellow Goat Co. brand mark">
-            <div className="fallback-mark">YG</div>
-            <img src={hiremeUrl} alt="Hire me — Yellow Goat Co." className="hero-badge" />
-          </div>
-        }
-      >
-        <SignatureMark />
-      </Suspense>
+      {showVisual && (
+        <Suspense
+          fallback={
+            <div className="hero-visual reveal hero-visual-fallback" aria-label="Yellow Goat Co. brand mark">
+              <div className="fallback-mark">YG</div>
+              <img src={hiremeUrl} alt="Hire me — Yellow Goat Co." className="hero-badge" />
+            </div>
+          }
+        >
+          <SignatureMark />
+        </Suspense>
+      )}
     </section>
   )
 }

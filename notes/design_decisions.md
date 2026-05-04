@@ -84,7 +84,19 @@ Mirrors Chirinos_Portfolio Contact.tsx layout. Left column: "Let's Talk." displa
 
 ---
 
+**Contact form mobile intake**
+Mobile contact form was redesigned after senior designer + UI/UX review. Desktop keeps the editorial form shell but uses compact dropdowns for service type, project type, and timeline so the form does not become too tall; budget remains a write-in. Mobile uses a premium one-question-at-a-time intake wizard with progress, Back/Next, optional skips, and a final review step. Required mobile path is name, email, business, and goals; service type, project type, timeline, budget, and website are optional to reduce friction and encourage curiosity. Blank optional values serialize as "Not provided" in the mailto body. Custom validation focuses the relevant mobile/desktop field and announces the error through the form note.
+**Why:** User said the form was too long and stacked poorly on mobile, then asked for a more premium page-by-page experience instead of a long stacked form.
+
+---
+
+**Mobile and tablet formatting system**
+Replaced the ad hoc mobile scale with a controlled mobile system: smaller display clamps, looser mobile letter spacing, tighter section padding, compact services panels, reduced card/node padding in Work/Fit/Process/Philosophy, and a narrow-phone safety layer around 380px. The hero 3D SignatureMark is desktop-only and does not render under 1100px, keeping it off phones and tablets.
+**Why:** User reported hero text going off screen, services cards feeling oversized, and mobile sections lacking congruent formatting. Later tablet review showed the 3D element slipping under the hero in an awkward way, so hiding it through tablet improves flow into Attention and avoids loading a heavy decorative scene where it does not support the layout.
+
+---
+
 **SignatureMark: tactile website assembly (2026-05-03)**
-Rebuilt the hero 3D element as a procedural React Three Fiber composition inspired by the project brief: a cream browser/window frame acts as the central foundation, while the sage grid panel, wireframe card, typography card, dark code card, toolbar, pen coin, code tile, cursor, orbital ring, and small accent cubes fly in from multiple directions, scale down, and land on that single base. Motion uses data-driven `from/to` positions, slight rotation/depth travel, staggered timing, a soft snap pulse, cursor press moment, then subtle idle float. Reduced motion initializes from `matchMedia`, disables mouse parallax, switches Canvas to `frameloop="demand"`, and renders the final assembled state.
+Rebuilt the hero 3D element as a procedural React Three Fiber composition inspired by the project brief: a cream browser/window frame acts as the central foundation, while a smaller sage grid panel, wireframe card, typography card, dark code card, text-lines panel, toolbar, cursor, and separate `Design. Build. Elevate.` word strip fly in from multiple directions, scale down, and land in assigned wireframe zones on that single base. The words are intentionally a separate animated top-band element, not static text printed on the foundation. The palette/typography card sits lower/right so it does not compete with the word strip. The orbital ring, extra cubes, pen coin, and code tile were removed because they made the final composition feel too busy. Motion uses data-driven `from/to` positions, slight rotation/depth travel, staggered timing, a soft snap pulse, cursor press moment, then subtle idle float. Reduced motion initializes from `matchMedia`, disables mouse parallax, switches Canvas to `frameloop="demand"`, and renders the final assembled state.
 **Why:** User wanted the hero to feel whimsical, premium, editorial, soft/tactile, and more clearly like components assembling into a site, using the PDF brief and supplied reference image.
 **Motion brief:** `/Users/helenchirinos/Desktop/porfolio/assets/3D Hero Animation — Creative Motion Brief.pdf`

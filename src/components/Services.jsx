@@ -13,7 +13,10 @@ export default function Services() {
       <div className="service-grid">
         {services.map((service) => (
           <article key={service.title} className={`service-card ${service.featured ? 'featured' : ''} reveal`}>
-            <p className="card-kicker">{service.kicker}</p>
+            <div className="service-card-top">
+              <p className="card-kicker">{service.kicker}</p>
+              <span className="price">{service.note}</span>
+            </div>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
             <ul>
@@ -21,7 +24,6 @@ export default function Services() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <span className="price">{service.note}</span>
           </article>
         ))}
       </div>

@@ -78,7 +78,12 @@ export default function Header() {
           </div>
           <nav className="menu-links" aria-label="Mobile navigation">
             {links.map(([label, href], index) => (
-              <a key={href} href={href} onClick={() => setOpen(false)}>
+              <a
+                key={href}
+                href={href}
+                style={{ '--menu-i': index }}
+                onClick={() => setOpen(false)}
+              >
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 {label}
               </a>

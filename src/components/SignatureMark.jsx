@@ -33,6 +33,45 @@ function settle(t) {
   return lerp(1.035, 1, easeOutExpo((t - 0.82) / 0.18))
 }
 
+function easeInOutQuart(t) {
+  t = clamp01(t)
+  return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2
+}
+
+function cursorTour(elapsed, home) {
+  const start = 4.9
+  if (elapsed < start) return home
+
+  const cycle = 7.6
+  const move = 0.76
+  const hold = 0.52
+  const t = (elapsed - start) % cycle
+  const stops = [
+    home,
+    [-0.65, 0.17, 0.64],
+    [-0.41, 0.17, 0.64],
+    [0.03, 0.17, 0.64],
+    home,
+  ]
+
+  let cursor = 0
+  for (let i = 0; i < stops.length - 1; i += 1) {
+    const phase = t - cursor
+    if (phase < move) {
+      const eased = easeInOutQuart(phase / move)
+      return [
+        lerp(stops[i][0], stops[i + 1][0], eased),
+        lerp(stops[i][1], stops[i + 1][1], eased),
+        lerp(stops[i][2], stops[i + 1][2], eased),
+      ]
+    }
+    if (phase < move + hold) return stops[i + 1]
+    cursor += move + hold
+  }
+
+  return home
+}
+
 function useReducedMotion() {
   const [reduced, setReduced] = useState(() => (
     typeof window !== 'undefined' ? window.matchMedia(MOTION_QUERY).matches : false
@@ -82,6 +121,11 @@ function positionPiece(group, piece, elapsed, progress, reducedMotion) {
     lerp(piece.from[1], piece.to[1], eased) + idleY - cursorPress * 0.25,
     lerp(piece.from[2], piece.to[2], easeOutExpo(progress)) + travelArc,
   )
+
+  if (!reducedMotion && piece.key === 'cursor' && arrived) {
+    const [x, y, z] = cursorTour(elapsed, piece.to)
+    group.position.set(x, y + idleY * 0.35, z)
+  }
 
   group.rotation.set(
     lerp(piece.fromRot[0], piece.toRot[0], easeOutExpo(progress)) + idleRot * 0.5,
@@ -169,28 +213,23 @@ function BrowserWindow() {
       <FacePlane x={0} y={0.48} z={0.058} w={2.04} h={0.012} color={C.ink} opacity={0.16} radius={0.004} />
       <WindowDots />
       <FacePlane x={0.38} y={0.54} z={0.065} w={1.08} h={0.08} color={C.peach} opacity={0.72} radius={0.025} />
-      <FacePlane x={0.98} y={0.26} z={0.066} w={0.2} h={0.018} color={C.ink} opacity={0.9} radius={0.004} />
-      <FacePlane x={0.98} y={0.18} z={0.066} w={0.2} h={0.018} color={C.ink} opacity={0.9} radius={0.004} />
-      <FacePlane x={0.98} y={0.1} z={0.066} w={0.2} h={0.018} color={C.ink} opacity={0.9} radius={0.004} />
+      <FacePlane x={0.98} y={0.31} z={0.066} w={0.2} h={0.018} color={C.ink} opacity={0.9} radius={0.004} />
+      <FacePlane x={0.98} y={0.23} z={0.066} w={0.2} h={0.018} color={C.ink} opacity={0.9} radius={0.004} />
+      <FacePlane x={0.98} y={0.15} z={0.066} w={0.2} h={0.018} color={C.ink} opacity={0.9} radius={0.004} />
 
-      <LabelText x={-0.9} y={0.22} z={0.07} size={0.19} anchorX="left" maxWidth={0.72}>
-        Design.{"\n"}Build.{"\n"}Elevate.
-      </LabelText>
-      <LabelText x={-0.9} y={-0.28} z={0.07} size={0.05} anchorX="left" maxWidth={0.72}>
-        Websites shaped around trust, clarity, and better decisions.
-      </LabelText>
-      <RoundedBox args={[0.52, 0.17, 0.035]} radius={0.035} smoothness={4} position={[-0.63, -0.54, 0.085]}>
+      <FacePlane x={-0.66} y={0.02} z={0.07} w={0.44} h={0.026} color={C.ink} opacity={0.32} radius={0.008} />
+      <FacePlane x={-0.72} y={-0.08} z={0.07} w={0.34} h={0.022} color={C.ink} opacity={0.22} radius={0.008} />
+      <RoundedBox args={[0.44, 0.15, 0.035]} radius={0.03} smoothness={4} position={[-0.67, -0.32, 0.085]}>
         <ClayMaterial color={C.coral} roughness={0.8} />
       </RoundedBox>
-      <LabelText x={-0.83} y={-0.54} z={0.108} size={0.038} color={C.cream} anchorX="left">
-        START
-      </LabelText>
 
-      <FacePlane x={0.38} y={0.08} z={0.066} w={0.64} h={0.72} color={C.sage} opacity={0.78} radius={0.04} />
-      <FacePlane x={0.41} y={0.04} z={0.082} w={0.38} h={0.36} color={C.cream} opacity={0.9} radius={0.12} />
-      <Dot x={0.42} y={0.12} z={0.092} r={0.13} color={C.peach} />
-      <FacePlane x={0.38} y={-0.28} z={0.088} w={0.54} h={0.01} color={C.cream} opacity={0.62} radius={0.004} />
-      <FacePlane x={0.38} y={-0.36} z={0.088} w={0.44} h={0.01} color={C.cream} opacity={0.5} radius={0.004} />
+      <FacePlane x={0.38} y={0.07} z={0.066} w={0.7} h={0.76} color={C.sage} opacity={0.26} radius={0.035} />
+      <FacePlane x={0.38} y={0.18} z={0.074} w={0.54} h={0.28} color={C.cream} opacity={0.68} radius={0.02} />
+      <FacePlane x={0.38} y={-0.13} z={0.074} w={0.54} h={0.11} color={C.cream} opacity={0.5} radius={0.014} />
+      <FacePlane x={0.38} y={-0.31} z={0.074} w={0.54} h={0.11} color={C.cream} opacity={0.42} radius={0.014} />
+
+      <FacePlane x={-0.48} y={-0.55} z={0.07} w={0.26} h={0.018} color={C.ink} opacity={0.18} radius={0.006} />
+      <FacePlane x={0.58} y={-0.55} z={0.07} w={0.28} h={0.018} color={C.ink} opacity={0.18} radius={0.006} />
     </group>
   )
 }
@@ -210,6 +249,27 @@ function SageGridPanel() {
       {lines}
       <FacePlane x={0.08} y={-0.08} w={0.72} h={0.33} color={C.cream} opacity={0.84} radius={0.16} />
       <Dot x={0.08} y={0.02} r={0.105} color={C.peach} />
+    </group>
+  )
+}
+
+function HeroWordLine() {
+  return (
+    <group>
+      <RoundedBox args={[1.42, 0.24, 0.045]} radius={0.045} smoothness={5}>
+        <ClayMaterial color={C.cream} opacity={0.94} roughness={0.82} />
+      </RoundedBox>
+      <FacePlane x={-0.31} y={-0.055} w={0.006} h={0.11} color={C.ink} opacity={0.16} radius={0.002} />
+      <FacePlane x={0.18} y={-0.055} w={0.006} h={0.11} color={C.ink} opacity={0.16} radius={0.002} />
+      <LabelText x={-0.63} y={0.005} z={0.055} size={0.078} anchorX="left">
+        Design.
+      </LabelText>
+      <LabelText x={-0.21} y={0.005} z={0.055} size={0.078} anchorX="left">
+        Build.
+      </LabelText>
+      <LabelText x={0.31} y={0.005} z={0.055} size={0.078} anchorX="left">
+        Elevate.
+      </LabelText>
     </group>
   )
 }
@@ -299,33 +359,6 @@ function ToolbarStrip() {
   )
 }
 
-function CodeTile() {
-  return (
-    <group>
-      <RoundedBox args={[0.38, 0.38, 0.08]} radius={0.05} smoothness={5}>
-        <ClayMaterial color={C.coral} />
-      </RoundedBox>
-      <LabelText z={0.07} size={0.12} color={C.cream}>
-        &lt;/&gt;
-      </LabelText>
-    </group>
-  )
-}
-
-function PenCoin() {
-  return (
-    <group>
-      <mesh>
-        <cylinderGeometry args={[0.17, 0.17, 0.06, 36]} />
-        <ClayMaterial color={C.peach} />
-      </mesh>
-      <LabelText z={0.038} size={0.1} color={C.ink}>
-        ◇
-      </LabelText>
-    </group>
-  )
-}
-
 function CursorPointer() {
   const shape = useMemo(() => {
     const cursor = new Shape()
@@ -350,28 +383,6 @@ function CursorPointer() {
   )
 }
 
-function OrbitalRing() {
-  return (
-    <group rotation={[1.08, 0.12, 0.22]}>
-      <mesh>
-        <torusGeometry args={[2.06, 0.01, 8, 120]} />
-        <meshStandardMaterial color={C.peach} roughness={0.7} transparent opacity={0.52} />
-      </mesh>
-      <Dot x={-1.34} y={0.08} z={0.02} r={0.045} color={C.sage} />
-      <Dot x={1.35} y={-0.08} z={0.02} r={0.045} color={C.peach} />
-    </group>
-  )
-}
-
-function AccentCube({ color = C.peach, size = 0.12 }) {
-  return (
-    <mesh>
-      <boxGeometry args={[size, size, size]} />
-      <ClayMaterial color={color} />
-    </mesh>
-  )
-}
-
 function Scene({ reducedMotion }) {
   const rootRef = useRef()
   const mouseRef = useRef([0, 0])
@@ -383,35 +394,16 @@ function Scene({ reducedMotion }) {
   const codeRef = useRef()
   const wireRef = useRef()
   const typoRef = useRef()
+  const wordsRef = useRef()
   const textLinesRef = useRef()
   const toolbarRef = useRef()
-  const codeTileRef = useRef()
-  const penRef = useRef()
   const cursorRef = useRef()
-  const ringRef = useRef()
-  const cubeARef = useRef()
-  const cubeBRef = useRef()
-  const cubeCRef = useRef()
 
   const pieces = useMemo(() => ([
     {
-      key: 'ring',
-      ref: ringRef,
-      delay: 0.05,
-      duration: 0.9,
-      from: [0.1, 0.08, -0.72],
-      to: [0.02, -0.02, -0.48],
-      fromRot: [1.2, 0.34, -0.55],
-      toRot: [1.08, 0.12, 0.22],
-      fromScale: 0.68,
-      toScale: 0.82,
-      phase: 0.2,
-      arc: 0.08,
-    },
-    {
       key: 'browser',
       ref: browserRef,
-      delay: 0.28,
+      delay: 0.18,
       duration: 1.08,
       from: [0.08, 2.95, 0.34],
       to: [0.02, 0.02, 0.02],
@@ -423,30 +415,44 @@ function Scene({ reducedMotion }) {
       arc: 0.32,
     },
     {
+      key: 'words',
+      ref: wordsRef,
+      delay: 0.72,
+      duration: 0.9,
+      from: [-1.55, 1.2, 0.48],
+      to: [-0.28, 0.29, 0.34],
+      fromRot: [0.08, 0.28, -0.16],
+      toRot: [0.035, -0.09, 0.005],
+      fromScale: 0.78,
+      toScale: 0.72,
+      phase: 1.1,
+      arc: 0.18,
+    },
+    {
       key: 'sage',
       ref: sageRef,
-      delay: 0.9,
+      delay: 0.84,
       duration: 0.92,
       from: [2.9, 1.45, -0.7],
-      to: [0.42, 0.04, 0.16],
+      to: [0.45, 0.08, 0.16],
       fromRot: [0.28, -0.6, 0.32],
       toRot: [0.035, -0.09, 0.005],
       fromScale: 0.7,
-      toScale: 0.52,
+      toScale: 0.44,
       phase: 1.4,
       arc: 0.2,
     },
     {
       key: 'code',
       ref: codeRef,
-      delay: 1.08,
+      delay: 1.18,
       duration: 0.92,
       from: [2.85, -1.65, 0.2],
-      to: [0.64, -0.37, 0.24],
+      to: [0.58, -0.34, 0.24],
       fromRot: [-0.24, -0.58, -0.2],
       toRot: [0.035, -0.09, 0.005],
       fromScale: 0.68,
-      toScale: 0.42,
+      toScale: 0.34,
       phase: 2.1,
       arc: 0.28,
     },
@@ -456,11 +462,11 @@ function Scene({ reducedMotion }) {
       delay: 1.22,
       duration: 0.9,
       from: [-0.5, -2.65, 0.16],
-      to: [0.02, -0.21, 0.28],
+      to: [0.02, -0.18, 0.26],
       fromRot: [-0.45, 0.16, -0.2],
       toRot: [0.035, -0.09, 0.005],
       fromScale: 0.68,
-      toScale: 0.45,
+      toScale: 0.38,
       phase: 2.8,
       arc: 0.18,
     },
@@ -470,11 +476,11 @@ function Scene({ reducedMotion }) {
       delay: 1.36,
       duration: 0.9,
       from: [-3, 0.78, -0.2],
-      to: [-0.62, 0.12, 0.22],
+      to: [0.08, -0.47, 0.24],
       fromRot: [0.2, 0.55, -0.3],
       toRot: [0.035, -0.09, 0.005],
       fromScale: 0.68,
-      toScale: 0.42,
+      toScale: 0.26,
       phase: 3.6,
       arc: 0.22,
     },
@@ -484,11 +490,11 @@ function Scene({ reducedMotion }) {
       delay: 1.5,
       duration: 0.88,
       from: [-2.9, -1.2, 0.18],
-      to: [-0.62, -0.35, 0.24],
+      to: [-0.63, -0.38, 0.23],
       fromRot: [-0.14, 0.5, 0.18],
       toRot: [0.035, -0.09, 0.005],
       fromScale: 0.68,
-      toScale: 0.46,
+      toScale: 0.34,
       phase: 4.4,
       arc: 0.14,
     },
@@ -498,95 +504,25 @@ function Scene({ reducedMotion }) {
       delay: 1.7,
       duration: 0.86,
       from: [-0.2, -2.5, 0.55],
-      to: [0.02, 0.39, 0.34],
+      to: [0.02, -0.55, 0.32],
       fromRot: [-0.18, 0.05, -0.18],
       toRot: [0.035, -0.09, 0.005],
       fromScale: 0.7,
-      toScale: 0.5,
+      toScale: 0.42,
       phase: 5,
       arc: 0.18,
     },
     {
-      key: 'pen',
-      ref: penRef,
-      delay: 1.86,
-      duration: 0.82,
-      from: [0.52, -2.45, 0.54],
-      to: [0.38, -0.18, 0.38],
-      fromRot: [0.7, 0.2, 0.44],
-      toRot: [1.44, -0.09, 0.01],
-      fromScale: 0.7,
-      toScale: 0.48,
-      phase: 5.8,
-      arc: 0.2,
-    },
-    {
-      key: 'code-tile',
-      ref: codeTileRef,
-      delay: 2,
-      duration: 0.82,
-      from: [2.6, 1.36, 0.54],
-      to: [0.78, 0.37, 0.32],
-      fromRot: [0.14, -0.6, 0.3],
-      toRot: [0.035, -0.09, 0.005],
-      fromScale: 0.68,
-      toScale: 0.5,
-      phase: 6.4,
-      arc: 0.14,
-    },
-    {
-      key: 'cube-a',
-      ref: cubeARef,
-      delay: 2.16,
-      duration: 0.7,
-      from: [-2.3, -1.72, 0.3],
-      to: [-0.88, -0.47, 0.23],
-      fromRot: [0.44, 0.2, 0.16],
-      toRot: [0.035, -0.09, 0.005],
-      fromScale: 0.56,
-      toScale: 0.66,
-      phase: 7,
-      arc: 0.12,
-    },
-    {
-      key: 'cube-b',
-      ref: cubeBRef,
-      delay: 2.24,
-      duration: 0.7,
-      from: [1.8, -1.9, 0.12],
-      to: [0.83, -0.05, 0.24],
-      fromRot: [0.2, -0.4, -0.18],
-      toRot: [0.035, -0.09, 0.005],
-      fromScale: 0.56,
-      toScale: 0.68,
-      phase: 7.8,
-      arc: 0.1,
-    },
-    {
-      key: 'cube-c',
-      ref: cubeCRef,
-      delay: 2.32,
-      duration: 0.7,
-      from: [-2.2, 1.6, 0.08],
-      to: [-0.86, 0.35, 0.24],
-      fromRot: [0.12, 0.34, -0.2],
-      toRot: [0.035, -0.09, 0.005],
-      fromScale: 0.56,
-      toScale: 0.64,
-      phase: 8.2,
-      arc: 0.1,
-    },
-    {
       key: 'cursor',
       ref: cursorRef,
-      delay: 2.56,
+      delay: 2.08,
       duration: 0.95,
       from: [2.2, 0.34, 0.68],
-      to: [0.72, -0.38, 0.54],
+      to: [-0.42, -0.31, 0.5],
       fromRot: [0.02, -0.14, -0.42],
       toRot: [0.04, -0.08, -0.34],
       fromScale: 0.62,
-      toScale: 0.72,
+      toScale: 0.54,
       phase: 8.8,
       arc: 0.24,
     },
@@ -656,17 +592,10 @@ function Scene({ reducedMotion }) {
       }
     })
 
-    if (ringRef.current) {
-      ringRef.current.rotation.z += reducedMotion ? 0 : 0.0018
-    }
-
   })
 
   return (
     <group ref={rootRef} scale={1.05}>
-      <group ref={ringRef}>
-        <OrbitalRing />
-      </group>
       <group ref={sageRef}>
         <SageGridPanel />
       </group>
@@ -675,6 +604,9 @@ function Scene({ reducedMotion }) {
       </group>
       <group ref={wireRef}>
         <WireframeCard />
+      </group>
+      <group ref={wordsRef}>
+        <HeroWordLine />
       </group>
       <group ref={typoRef}>
         <TypographyCard />
@@ -688,23 +620,8 @@ function Scene({ reducedMotion }) {
       <group ref={toolbarRef}>
         <ToolbarStrip />
       </group>
-      <group ref={penRef}>
-        <PenCoin />
-      </group>
-      <group ref={codeTileRef}>
-        <CodeTile />
-      </group>
       <group ref={cursorRef}>
         <CursorPointer />
-      </group>
-      <group ref={cubeARef}>
-        <AccentCube color={C.peach} size={0.13} />
-      </group>
-      <group ref={cubeBRef}>
-        <AccentCube color={C.sage} size={0.09} />
-      </group>
-      <group ref={cubeCRef}>
-        <AccentCube color={C.coral} size={0.1} />
       </group>
     </group>
   )

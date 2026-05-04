@@ -129,7 +129,7 @@ export default function Work() {
               aria-pressed={index === activeIndex}
             >
               <span>{project.id}</span>
-              {project.title}
+              <span className="work-index-title">{project.title}</span>
             </button>
           ))}
         </div>
