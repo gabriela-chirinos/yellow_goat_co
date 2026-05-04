@@ -35,16 +35,16 @@ const timelines = [
 ]
 
 const mobileSteps = [
-  { id: 'name', kicker: 'Start', title: 'What should I call you?', hint: 'Just your name for the email draft.' },
-  { id: 'email', kicker: 'Reply to', title: 'Where should I reply?', hint: 'Use the email you actually check.' },
-  { id: 'business', kicker: 'Context', title: 'What business is this for?', hint: 'A business, studio, practice, or offer name is enough.' },
-  { id: 'goals', kicker: 'The real ask', title: 'What needs to change?', hint: 'Give me the friction, the offer, and what a better site should make easier.' },
-  { id: 'serviceType', kicker: 'Optional', title: 'What kind of business is it?', hint: 'Skip this if none of these feel quite right.' },
-  { id: 'projectType', kicker: 'Optional', title: 'What kind of project are you imagining?', hint: 'A best guess is enough.' },
-  { id: 'timeline', kicker: 'Optional', title: 'What timeline feels true?', hint: 'No pressure. This just frames urgency.' },
-  { id: 'budget', kicker: 'Optional', title: 'Any budget range worth naming?', hint: 'A rough comfort zone is more useful than a perfect number.' },
-  { id: 'website', kicker: 'Optional', title: 'Is there a current site?', hint: 'Drop a URL if there is one.' },
-  { id: 'review', kicker: 'Ready', title: 'Ready to draft the email?', hint: 'I’ll open your email app with these details filled in.' },
+  { id: ‘name’, kicker: ‘Start’, title: ‘What should I call you?’, hint: ‘Just your first name is fine.’ },
+  { id: ‘email’, kicker: ‘Reply to’, title: ‘Where should I reply?’, hint: ‘Use the email you actually check.’ },
+  { id: ‘business’, kicker: ‘Context’, title: ‘What business is this for?’, hint: ‘A business, studio, practice, or offer name is enough.’ },
+  { id: ‘goals’, kicker: ‘The real ask’, title: ‘What needs to change?’, hint: ‘Give me the friction, the offer, and what a better site should make easier.’ },
+  { id: ‘serviceType’, kicker: ‘Optional’, title: ‘What kind of business is it?’, hint: ‘Skip this if none of these feel quite right.’ },
+  { id: ‘projectType’, kicker: ‘Optional’, title: ‘What kind of project are you imagining?’, hint: ‘A best guess is enough.’ },
+  { id: ‘timeline’, kicker: ‘Optional’, title: ‘What timeline feels true?’, hint: ‘No pressure. This just frames urgency.’ },
+  { id: ‘budget’, kicker: ‘Optional’, title: ‘Any budget range worth naming?’, hint: ‘A rough comfort zone is more useful than a perfect number.’ },
+  { id: ‘website’, kicker: ‘Optional’, title: ‘Is there a current site?’, hint: ‘Drop a URL if there is one.’ },
+  { id: ‘review’, kicker: ‘Ready’, title: ‘Everything look right?’, hint: ‘Hit send and your details will arrive pre-filled — ready to go.’ },
 ]
 
 function countWords(value) {
@@ -52,13 +52,13 @@ function countWords(value) {
 }
 
 export default function Contact() {
-  const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'chirinos@outlook.com'
+  const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'yellowgoatcreative@gmail.com'
   const desktopGoalsRef = useRef(null)
   const mobileGoalsRef = useRef(null)
   const mobileStepRef = useRef(null)
   const detailsTouchedRef = useRef(false)
   const [form, setForm] = useState(initialForm)
-  const [note, setNote] = useState({ type: '', text: 'Opens your email app with these details filled in.' })
+  const [note, setNote] = useState({ type: '', text: 'Your details will arrive pre-filled — just hit send.' })
   const [mobileStep, setMobileStep] = useState(0)
   const [detailsOpen, setDetailsOpen] = useState(() => (
     typeof window !== 'undefined' ? window.matchMedia('(min-width: 681px)').matches : true
@@ -79,12 +79,12 @@ export default function Contact() {
   const updateField = (event) => {
     const { name, value } = event.target
     setForm((current) => ({ ...current, [name]: value }))
-    if (note.type === 'error') setNote({ type: '', text: 'Opens your email app with these details filled in.' })
+    if (note.type === 'error') setNote({ type: '', text: 'Your details will arrive pre-filled — just hit send.' })
   }
 
   const setMobileChoice = (name, value) => {
     setForm((current) => ({ ...current, [name]: value }))
-    if (note.type === 'error') setNote({ type: '', text: 'Opens your email app with these details filled in.' })
+    if (note.type === 'error') setNote({ type: '', text: 'Your details will arrive pre-filled — just hit send.' })
   }
 
   const validateStep = (stepId) => {
@@ -102,7 +102,7 @@ export default function Contact() {
 
   const goToMobileStep = (nextStep) => {
     setMobileStep(nextStep)
-    setNote({ type: '', text: 'Opens your email app with these details filled in.' })
+    setNote({ type: '', text: 'Your details will arrive pre-filled — just hit send.' })
     window.requestAnimationFrame(() => {
       mobileStepRef.current?.focus()
     })
@@ -183,7 +183,7 @@ export default function Contact() {
       ].join('\n')
     )
 
-    setNote({ type: 'success', text: 'Inquiry ready. Opening an email with your project details.' })
+    setNote({ type: 'success', text: 'Your email app should open with everything filled in — just hit send.' })
     window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`
   }
 
@@ -432,7 +432,7 @@ export default function Contact() {
               {note.text}
             </p>
             <button className="button button-primary" type="submit">
-              Open Email Draft
+              Send Inquiry
             </button>
           </form>
 
@@ -487,7 +487,7 @@ export default function Contact() {
                 </>
               ) : (
                 <button className="button button-primary" type="submit">
-                  Open Email Draft
+                  Send Inquiry
                 </button>
               )}
             </div>
