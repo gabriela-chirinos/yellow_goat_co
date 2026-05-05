@@ -2,7 +2,7 @@ import lustroCover from '../assets/projects/lustro.jpg'
 import sokuCover from '../assets/projects/soku.jpg'
 import panCover from '../assets/projects/pan.jpg'
 import lumiereCover from '../assets/projects/nailsalon.jpg'
-import portalCover from '../assets/projects/portal.png'
+import portalCover from '../assets/projects/portal.jpg'
 
 export const projects = [
   {
@@ -68,7 +68,7 @@ export const services = [
     kicker: '01 / Launch',
     title: 'Launch Page',
     description:
-      'You have an offer worth taking seriously. This gets it in front of people who will — designed and built to convert from day one.',
+      'You have an offer worth taking seriously. This gets it in front of the right people with a page built for clarity, trust, and action.',
     items: ['Offer structure and page strategy', 'Responsive design and build', 'Inquiry or booking path'],
     note: 'Scoped after inquiry',
   },

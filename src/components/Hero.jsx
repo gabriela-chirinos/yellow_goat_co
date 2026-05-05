@@ -31,7 +31,7 @@ export default function Hero() {
         <p className="eyebrow reveal">Yellow Goat Co. / Solo web studio</p>
         <h1 className="hero-title reveal" data-reveal-speed="slow">DESIGN IS INTELLIGENCE MADE VISIBLE.</h1>
         <p className="hero-subtitle reveal">
-          Building digital experiences that help businesses connect with their customers.
+          Websites for service businesses that need clearer positioning, stronger trust, and more qualified inquiries.
         </p>
         <div className="hero-actions reveal">
           <a className="button button-primary" href="#contact">

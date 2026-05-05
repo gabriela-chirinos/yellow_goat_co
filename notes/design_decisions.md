@@ -18,7 +18,7 @@ The 3D browser frame (GSAP intro + mousemove 3D tilt) was kept. The fake HTML mo
 ---
 
 **Selected Work Rolodex viewer**
-The Work section now shows one featured project at a time with project index buttons and a "Next project" control. GSAP animates project changes with a top-entry Rolodex/card-index feel: outgoing project recedes down, incoming project drops/flips in from above. The previous scroll-driven hook (`useWorkScrollMotion.js`) was removed because it made the page feel empty/slow.
+The Work section now shows one featured project at a time with project index buttons and a "Next project" control. GSAP animates project changes with a top-entry Rolodex/card-index feel: outgoing project recedes down, incoming project drops/flips in from above. The previous scroll-driven hook (`useWorkScrollMotion.js`) was removed because it made the page feel empty/slow. Desktop project pills wrap inside the control row so adding more projects does not overflow across the layout. Mobile keeps the circular overlapping/pancake controls with extra bottom breathing room. The decorative back plates behind the screenshot card are calculated from the visual column rather than the full two-column project card, keeping the layer symmetrical as desktop widths change.
 **Why:** User wanted a more creative one-at-a-time cycle where projects feel like index cards flipping over each other, while keeping the work inspectable and scalable for future projects.
 
 ---

@@ -7,7 +7,7 @@ export default function Services() {
         <p className="eyebrow">Services</p>
         <h2>Every project is different.</h2>
         <p>
-          Three different scopes. One level of attention. Whether you're building from zero, fixing what's broken, or doing something that doesn't fit a template — every project gets the same strategic focus from first call to launch day. Not sure which fits your situation? Let's chat!
+         Three different scopes. One level of attention. Whether you're building from zero, fixing what's broken, or doing something that doesn't fit a template, every project gets the same strategic focus. Not sure which fits your situation? Let's chat!
         </p>
       </div>
       <div className="service-grid">

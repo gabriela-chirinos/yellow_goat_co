@@ -106,9 +106,9 @@ export default function Work() {
     <section id="work" className="work section-shell">
       <div className="section-intro reveal" data-reveal-speed="slow">
         <p className="eyebrow">Selected work</p>
-        <h2>Influence that precedes presence</h2>
+        <h2>How we build trust</h2>
         <p>
-      We don't just build sites, we engineer perspectives. Through sharp positioning and thoughtful design, we move visitors from curiosity to conviction.
+          We don't just build sites, we engineer perspectives. Through sharp positioning and thoughtful design, we move visitors from curiosity to conviction.
         </p>
       </div>
 

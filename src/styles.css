@@ -1338,7 +1338,7 @@ dd {
   overflow: hidden;
   width: min(100%, 760px);
   border: 1px solid var(--ink);
-  background: color-mix(in srgb, var(--sage) 28%, var(--cream));
+  background: color-mix(in srgb, var(--sage) 52%, var(--cream));
   padding: clamp(1.5rem, 2.6vw, 2.25rem);
   box-shadow: 10px 10px 0 var(--peach);
 }
