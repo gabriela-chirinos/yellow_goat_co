@@ -1,14 +1,14 @@
 ---
 name: Yellow Goat Co. portfolio — project state
-description: Current state of the portfolio site, what's been built, what's pending as of 2026-05-03
+description: Current state of the portfolio site, what's been built, what's pending as of 2026-05-04
 type: project
 originSessionId: 0c3520e6-9521-4168-9f9b-afabb9a17853
 ---
 Portfolio site for Helen Chirinos / Yellow Goat Co. at `/Users/helenchirinos/Desktop/porfolio`.
 
-**Stack:** Vite + React SPA. No git repo. No backend. Components in `src/components/`, styles in one `src/styles.css`, data in `src/data/projects.js`. GSAP for scroll reveals and 3D project card hovers. React Three Fiber + drei for the hero SignatureMark canvas.
+**Stack:** Vite + React SPA. Git repo connected to `https://github.com/gabriela-chirinos/yellow_goat_co.git`. No backend. Components in `src/components/`, styles in one `src/styles.css`, data in `src/data/projects.js`. GSAP for scroll reveals and 3D project card hovers. React Three Fiber + drei for the desktop-only hero SignatureMark canvas.
 
-**What's been implemented (as of 2026-05-03):**
+**What's been implemented (as of 2026-05-04):**
 
 - Full site audit completed (UX, design, copy, technical, animation/conversion)
 - DESIGN.md created at project root — full documented design system
@@ -33,6 +33,9 @@ Portfolio site for Helen Chirinos / Yellow Goat Co. at `/Users/helenchirinos/Des
 - **Contact section redesigned**: two-column layout (ref: Chirinos_Portfolio) — left col has "Let's Talk." display heading + looping "Available · Open to New Work" availability ticker, right col has full inquiry form. eyebrow/H2 intro removed from top (folded into left col)
 - **Contact form responsiveness updated**: desktop keeps the editorial form shell but uses compact dropdowns for service type, project type, and timeline to reduce height; budget remains a curiosity-friendly write-in. Mobile is a premium one-question-at-a-time intake wizard with progress, Back/Next, optional skips, and a final review step. Required mobile path is name, email, business, and goals; optional details serialize as "Not provided" in the mailto body when blank.
 - **Sitewide mobile/tablet formatting pass**: smaller screens now use a controlled display type scale, tighter section rhythm, compact services panels, smaller Work/Fit/Process/Philosophy surfaces, and narrow-phone safeguards. The hero 3D SignatureMark is desktop-only and does not render below 1100px because it slips awkwardly under the hero on tablet and does not serve the small-screen flow.
+- **Fit/Process responsive correction**: Fit proof cards now have constrained desktop width, full-width tablet/mobile behavior, and ghosted decorative numbers behind the copy. Process is four columns on desktop, two columns on tablet, and stacked editorial cards on mobile to prevent circular nodes from collapsing.
+- **Desktop scale correction after design/QA review**: section headings, body copy, section padding, Philosophy card scale, Process node scale, Services grid breakpoint, and the 981-1099px hero layout gap were adjusted so desktop no longer feels overly zoomed.
+- **Tablet hero open consideration**: user asked whether the standalone `hireme.png` badge should be visible on tablet while keeping the 3D canvas hidden. Recommended direction: yes, potentially as a restrained editorial sticker/accent, but only if it does not compete with the hero headline or add layout clutter.
 - **Fit / Who it is for copy overhauled**: cards now mirror buyer fit and positioning instead of repeating delivery proof points
 - **SignatureMark.jsx rebuilt again from the 3D Hero Animation brief**: tactile website assembly with a central browser/wireframe foundation. Smaller UI pieces fly in from varied angles with depth/rotation, scale down, and land in assigned zones on that base so the final state reads as one intentional wireframe rather than a collage. The `Design. Build. Elevate.` words now return as a separate animated top-band strip instead of static text on the base, and the palette/typography card sits lower/right to keep that area clear. The orbital ring/circle and extra decorative satellites were removed. It gets a small final snap pulse, then idles subtly. Reduced motion renders the assembled state immediately with demand rendering and no mouse parallax. YG palette colors only.
 
@@ -52,6 +55,7 @@ Portfolio site for Helen Chirinos / Yellow Goat Co. at `/Users/helenchirinos/Des
 - Form backend (mailto: currently) — user said they'll add Formspree/Calendly later
 - Testimonials and project result metrics — user needs to supply content
 - `hireme.png` is 1.2MB — suggest optimizing to WebP when possible
+- Consider a tablet-only standalone `hireme.png` treatment now that the 3D canvas is hidden below 1100px
 - Contact section: `contact-intro` div (eyebrow + H2 + p) was removed by a linter/save — current Contact.jsx goes straight into contact-layout. Verify in browser.
 
 **Why:** User is actively iterating toward a launch-ready portfolio.

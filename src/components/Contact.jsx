@@ -486,9 +486,12 @@ export default function Contact() {
                   </button>
                 </>
               ) : (
-                <button className="button button-primary" type="submit">
-                  Send Inquiry
-                </button>
+                <>
+                  <p className="mobile-send-hint">Your email app will open with everything filled in — just hit send.</p>
+                  <button className="button button-primary" type="submit">
+                    Send Inquiry
+                  </button>
+                </>
               )}
             </div>
           </form>

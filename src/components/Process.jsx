@@ -27,14 +27,13 @@ export default function Process() {
       <div className="process-top">
         <div className="section-intro reveal" data-reveal-speed="slow">
           <p className="eyebrow">Process</p>
-          <h2>How the work gets sharper.</h2>
+          <h2>Data is the signal through the noise</h2>
           <p>
-            It is not just about looking nice. It is whether your site is helping the right people understand,
-            trust, and take the next step.
+            Design is more than aesthetics. It's about building trust and driving the right people to action.
           </p>
         </div>
         <p className="process-note reveal">
-          Every phase is built to remove friction before it turns into hesitation.
+          Every phase is designed to turn momentum into conversion.
         </p>
       </div>
       <ol className="process-steps">

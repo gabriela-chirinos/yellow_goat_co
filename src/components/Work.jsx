@@ -106,10 +106,9 @@ export default function Work() {
     <section id="work" className="work section-shell">
       <div className="section-intro reveal" data-reveal-speed="slow">
         <p className="eyebrow">Selected work</p>
-        <h2>Work that earns the conversation before you're in the room.</h2>
+        <h2>Influence that precedes presence</h2>
         <p>
-          Yellow Goat Co. creates websites with a clear point of view: sharp positioning, thoughtful structure,
-          confident visuals, and copy that moves visitors from curiosity to action.
+      We don't just build sites, we engineer perspectives. Through sharp positioning and thoughtful design, we move visitors from curiosity to conviction.
         </p>
       </div>
 
@@ -162,7 +161,7 @@ export default function Work() {
             </dl>
             <div className="work-actions">
               <a
-                className="text-link"
+                className="work-next work-next--ghost"
                 href={activeProject.url}
                 target="_blank"
                 rel="noreferrer"

@@ -5,9 +5,9 @@ export default function Services() {
     <section id="services" className="services section-shell">
       <div className="section-intro reveal" data-reveal-speed="slow">
         <p className="eyebrow">Services</p>
-        <h2>The scope changes. The attention doesn't.</h2>
+        <h2>Every project is different.</h2>
         <p>
-          Three different scopes. One level of attention. Whether you're building from zero, fixing what's broken, or doing something that doesn't fit a template — every project gets the same strategic focus from first call to launch day. Not sure which fits your situation? One conversation usually makes it obvious.
+          Three different scopes. One level of attention. Whether you're building from zero, fixing what's broken, or doing something that doesn't fit a template — every project gets the same strategic focus from first call to launch day. Not sure which fits your situation? Let's chat!
         </p>
       </div>
       <div className="service-grid">

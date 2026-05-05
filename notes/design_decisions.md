@@ -94,6 +94,17 @@ Mobile contact form was redesigned after senior designer + UI/UX review. Desktop
 Replaced the ad hoc mobile scale with a controlled mobile system: smaller display clamps, looser mobile letter spacing, tighter section padding, compact services panels, reduced card/node padding in Work/Fit/Process/Philosophy, and a narrow-phone safety layer around 380px. The hero 3D SignatureMark is desktop-only and does not render under 1100px, keeping it off phones and tablets.
 **Why:** User reported hero text going off screen, services cards feeling oversized, and mobile sections lacking congruent formatting. Later tablet review showed the 3D element slipping under the hero in an awkward way, so hiding it through tablet improves flow into Attention and avoids loading a heavy decorative scene where it does not support the layout.
 
+**Fit and Process responsive correction**
+Fit proof cards are constrained on desktop and stretch cleanly on tablet/mobile. The card numbers are decorative ghost marks behind the content instead of visible layout elements. Process remains a four-item circle system on desktop, becomes a two-column grid on tablet, and switches to stacked editorial cards on mobile so the titles/body copy do not collapse or overflow.
+**Why:** User reported the "Who it is for" cards stretching too wide on desktop, collapsing/misaligning on mobile, and Process showing similar scaling issues.
+
+**Desktop scale correction**
+After design + QA agent review, the desktop type scale was reduced so non-hero sections stop reading as zoomed-in hero moments. Global section headings now have a lower desktop cap, body copy scales less aggressively, section vertical padding is tighter, Philosophy/Before You Inquire has its own smaller callout scale, Process nodes are smaller, and Services moves to two columns below 1100px. The hero also switches to one column below 1100px to match the point where the 3D canvas is hidden.
+**Why:** User shared a desktop screenshot where the Philosophy card was oversized and said multiple desktop sections felt too zoomed. The review found overly aggressive viewport-based type and a tablet/desktop gap between the hidden hero visual and the grid layout.
+
+**Tablet hire-me badge consideration**
+User asked whether the standalone `hireme.png` image should be visible on tablet while the 3D element remains hidden. Recommendation: likely yes, but only as a contained editorial sticker/accent with careful placement and no canvas, because it preserves personality without reintroducing the layout/bandwidth issues of the full 3D hero.
+
 ---
 
 **SignatureMark: tactile website assembly (2026-05-03)**

@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 
 const pairs = [
   {
-    rough: 'Looks polished.',
-    sharp: 'But does it build trust?',
+    rough: 'Traffic is coming in.',
+    sharp: 'Inquiries are not.',
   },
   {
-    rough: 'Gets attention.',
-    sharp: 'Turns attention into action.',
+    rough: 'Your site looks fine.',
+    sharp: "It's quietly costing you clients.",
   },
 ]
 
@@ -43,9 +43,9 @@ export default function Attention() {
     >
       <div className="attention-inner">
         <div className="attention-frame">
-          <p className="attention-kicker reveal">Before someone inquires, they decide</p>
+          <p className="attention-kicker reveal">Most sites don't have a design problem. They have a conversion problem.</p>
           <p className="attention-note reveal">
-            Strong design makes the right answers feel obvious before a buyer ever reaches out.
+            Visitors are landing. Reading. Leaving. The issue is not awareness — it is what happens after the click.
           </p>
         </div>
 
