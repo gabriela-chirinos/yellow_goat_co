@@ -1,7 +1,8 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
-import hiremeUrl from '../assets/hireme.png'
 
-const SignatureMark = lazy(() => import('./SignatureMark.jsx'))
+// Kick off the network fetch immediately — don't wait for React to render first
+const signatureMarkImport = import('./SignatureMark.jsx')
+const SignatureMark = lazy(() => signatureMarkImport)
 const HERO_VISUAL_QUERY = '(min-width: 1100px)'
 
 function useHeroVisual() {
@@ -43,14 +44,7 @@ export default function Hero() {
         </div>
       </div>
       {showVisual && (
-        <Suspense
-          fallback={
-            <div className="hero-visual reveal hero-visual-fallback" aria-label="Yellow Goat Co. brand mark">
-              <div className="fallback-mark">YG</div>
-              <img src={hiremeUrl} alt="Hire me — Yellow Goat Co." className="hero-badge" />
-            </div>
-          }
-        >
+        <Suspense fallback={<div className="hero-visual" aria-hidden="true" />}>
           <SignatureMark />
         </Suspense>
       )}

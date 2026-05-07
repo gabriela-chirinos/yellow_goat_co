@@ -150,7 +150,7 @@ function ClayMaterial({ color, opacity = 1, roughness = 0.86 }) {
 
 function FacePlane({ x = 0, y = 0, z = 0.056, w, h, color = C.ink, opacity = 1, radius = 0.01 }) {
   return (
-    <RoundedBox args={[w, h, 0.006]} radius={radius} smoothness={3} position={[x, y, z]}>
+    <RoundedBox args={[w, h, 0.006]} radius={radius} smoothness={2} position={[x, y, z]}>
       <ClayMaterial color={color} opacity={opacity} roughness={0.9} />
     </RoundedBox>
   )
@@ -159,7 +159,7 @@ function FacePlane({ x = 0, y = 0, z = 0.056, w, h, color = C.ink, opacity = 1, 
 function Dot({ x, y, z = 0.058, r = 0.025, color = C.coral, opacity = 1 }) {
   return (
     <mesh position={[x, y, z]}>
-      <circleGeometry args={[r, 24]} />
+      <circleGeometry args={[r, 16]} />
       <meshStandardMaterial color={color} roughness={0.76} transparent opacity={opacity} />
     </mesh>
   )
@@ -207,7 +207,7 @@ function WindowDots({ y = 0.53, z = 0.07 }) {
 function BrowserWindow() {
   return (
     <group>
-      <RoundedBox args={[2.25, 1.46, 0.09]} radius={0.075} smoothness={6}>
+      <RoundedBox args={[2.25, 1.46, 0.09]} radius={0.075} smoothness={3}>
         <ClayMaterial color={C.cream} />
       </RoundedBox>
       <FacePlane x={0} y={0.48} z={0.058} w={2.04} h={0.012} color={C.ink} opacity={0.16} radius={0.004} />
@@ -219,7 +219,7 @@ function BrowserWindow() {
 
       <FacePlane x={-0.66} y={0.02} z={0.07} w={0.44} h={0.026} color={C.ink} opacity={0.32} radius={0.008} />
       <FacePlane x={-0.72} y={-0.08} z={0.07} w={0.34} h={0.022} color={C.ink} opacity={0.22} radius={0.008} />
-      <RoundedBox args={[0.44, 0.15, 0.035]} radius={0.03} smoothness={4} position={[-0.67, -0.32, 0.085]}>
+      <RoundedBox args={[0.44, 0.15, 0.035]} radius={0.03} smoothness={2} position={[-0.67, -0.32, 0.085]}>
         <ClayMaterial color={C.coral} roughness={0.8} />
       </RoundedBox>
 
@@ -243,7 +243,7 @@ function SageGridPanel() {
 
   return (
     <group>
-      <RoundedBox args={[1.08, 0.88, 0.07]} radius={0.065} smoothness={5}>
+      <RoundedBox args={[1.08, 0.88, 0.07]} radius={0.065} smoothness={3}>
         <ClayMaterial color={C.sage} />
       </RoundedBox>
       {lines}
@@ -256,7 +256,7 @@ function SageGridPanel() {
 function HeroWordLine() {
   return (
     <group>
-      <RoundedBox args={[1.42, 0.24, 0.045]} radius={0.045} smoothness={5}>
+      <RoundedBox args={[1.42, 0.24, 0.045]} radius={0.045} smoothness={3}>
         <ClayMaterial color={C.cream} opacity={0.94} roughness={0.82} />
       </RoundedBox>
       <FacePlane x={-0.31} y={-0.055} w={0.006} h={0.11} color={C.ink} opacity={0.16} radius={0.002} />
@@ -277,7 +277,7 @@ function HeroWordLine() {
 function WireframeCard() {
   return (
     <group>
-      <RoundedBox args={[1, 0.68, 0.07]} radius={0.055} smoothness={5}>
+      <RoundedBox args={[1, 0.68, 0.07]} radius={0.055} smoothness={3}>
         <ClayMaterial color={C.cream} />
       </RoundedBox>
       <WindowDots y={0.25} z={0.064} />
@@ -296,7 +296,7 @@ function WireframeCard() {
 function TypographyCard() {
   return (
     <group>
-      <RoundedBox args={[0.72, 0.74, 0.07]} radius={0.055} smoothness={5}>
+      <RoundedBox args={[0.72, 0.74, 0.07]} radius={0.055} smoothness={3}>
         <ClayMaterial color={C.cream} />
       </RoundedBox>
       <LabelText x={-0.22} y={0.12} z={0.072} size={0.2} anchorX="left">
@@ -314,7 +314,7 @@ function TypographyCard() {
 function CodeCard() {
   return (
     <group>
-      <RoundedBox args={[0.92, 0.66, 0.08]} radius={0.06} smoothness={5}>
+      <RoundedBox args={[0.92, 0.66, 0.08]} radius={0.06} smoothness={3}>
         <ClayMaterial color={C.ink} roughness={0.82} />
       </RoundedBox>
       <FacePlane x={-0.12} y={0.18} w={0.46} h={0.018} color={C.peach} radius={0.006} />
@@ -329,7 +329,7 @@ function CodeCard() {
 function TextLinesCard() {
   return (
     <group>
-      <RoundedBox args={[0.82, 0.44, 0.07]} radius={0.055} smoothness={5}>
+      <RoundedBox args={[0.82, 0.44, 0.07]} radius={0.055} smoothness={3}>
         <ClayMaterial color={C.sage} />
       </RoundedBox>
       <FacePlane x={-0.04} y={0.11} w={0.46} h={0.03} color={C.cream} opacity={0.82} radius={0.012} />
@@ -346,7 +346,7 @@ function TextLinesCard() {
 function ToolbarStrip() {
   return (
     <group>
-      <RoundedBox args={[0.96, 0.2, 0.06]} radius={0.045} smoothness={5}>
+      <RoundedBox args={[0.96, 0.2, 0.06]} radius={0.045} smoothness={3}>
         <ClayMaterial color={C.cream} />
       </RoundedBox>
       <LabelText x={-0.35} y={0} z={0.062} size={0.07}>B</LabelText>
@@ -641,13 +641,12 @@ export default function SignatureMark() {
         camera={{ position: [0, 0, 5.4], fov: 39 }}
         style={{ width: '100%', height: '100%' }}
         gl={{ antialias: true, alpha: true }}
-        dpr={[1, 1.75]}
+        dpr={[1, 1.5]}
         frameloop={reducedMotion ? 'demand' : 'always'}
       >
         <ambientLight intensity={0.58} />
         <directionalLight position={[-3.2, 3.4, 4.4]} intensity={1.2} color="#fff6ea" />
         <directionalLight position={[3.4, -1.4, 2.4]} intensity={0.34} color="#d7e8d2" />
-        <directionalLight position={[0, 0, 4]} intensity={0.28} color={C.peach} />
         <Scene reducedMotion={reducedMotion} />
       </Canvas>
       <img src={hiremeUrl} alt="" className="hero-badge" />
