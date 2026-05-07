@@ -3,6 +3,7 @@ import sokuCover from '../assets/projects/soku.jpg'
 import panCover from '../assets/projects/pan.jpg'
 import lumiereCover from '../assets/projects/nailsalon.jpg'
 import portalCover from '../assets/projects/portal.jpg'
+import danielsCover from '../assets/projects/daniels.jpg'
 
 export const projects = [
   {
@@ -52,7 +53,19 @@ export const projects = [
   },
   {
     id: '05',
+    title: "Daniel's Plumbing & Air",
+    context: 'A conversion-focused redesign concept for an 18-year-old Austin service business with 2,597 Google reviews.',
+    problem: 'A 12-field contact form was blocking 40–60% of inbound leads. Their best trust signals were invisible.',
+    move: 'Rebuilt the hero around a 4-field booking form, surfaced 2,597 reviews above the fold, and restructured for mobile-first service calls.',
+    linkLabel: 'Open concept',
+    url: 'https://gabriela-chirinos.github.io/daniels-plumbing-concept/',
+    tone: 'daniels',
+    image: danielsCover,
+  },
+  {
+    id: '06',
     title: 'EL Portal',
+
     context: 'A structured mockup for a content-forward portal experience with clear navigation.',
     problem: 'The layout needed to organize dense information without losing hierarchy or direction.',
     move: 'Clean sectioning, intentional type scale, and a visual flow that guides without overwhelming.',
