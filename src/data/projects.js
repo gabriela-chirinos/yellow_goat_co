@@ -4,6 +4,7 @@ import panCover from '../assets/projects/pan.jpg'
 import lumiereCover from '../assets/projects/nailsalon.jpg'
 import portalCover from '../assets/projects/portal.jpg'
 import danielsCover from '../assets/projects/daniels.jpg'
+import acesCover from '../assets/projects/aces.jpg'
 
 export const projects = [
   {
@@ -73,6 +74,17 @@ export const projects = [
     url: 'https://gabriela-chirinos.github.io/EL_Portal_Mockup/',
     tone: 'portal',
     image: portalCover,
+  },
+  {
+    id: '07',
+    title: 'ACES Heating & Cooling',
+    context: 'A conversion-focused concept for a 24/7 HVAC service provider in the Tri-Cities region.',
+    problem: 'The business needed a site that communicated urgency, trust, and a fast path to booking.',
+    move: 'Dark, high-contrast layout with a lead form above the fold and trust signals surfaced immediately.',
+    linkLabel: 'Open concept',
+    url: 'https://gabriela-chirinos.github.io/ace_heating_and_cooling/',
+    tone: 'aces',
+    image: acesCover,
   },
 ]
 
